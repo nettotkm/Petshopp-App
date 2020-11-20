@@ -12,6 +12,7 @@ import { PetsPageComponent } from './pages/account/pets-page/pets-page.component
 import { ProductsPageComponent } from './pages/account/store/products-page/products-page.component';
 import { CartPageComponent } from './pages/account/store/cart-page/cart-page.component';
 import { FramePageComponent } from './pages/account/master/frame.page';
+import { ProductCardComponent } from './components/store/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FramePageComponent } from './pages/account/master/frame.page';
     ProductsPageComponent,
     CartPageComponent,
     FramePageComponent,
+    ProductCardComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
