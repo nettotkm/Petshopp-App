@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { SignupPageComponent } from './pages/account/signup-page/signup-page.com
 import { PetsPageComponent } from './pages/account/pets-page/pets-page.component';
 import { ProductsPageComponent } from './pages/account/store/products-page/products-page.component';
 import { CartPageComponent } from './pages/account/store/cart-page/cart-page.component';
+import { FramePageComponent } from './pages/account/master/frame.page';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { CartPageComponent } from './pages/account/store/cart-page/cart-page.com
     PetsPageComponent,
     ProductsPageComponent,
     CartPageComponent,
+    FramePageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
