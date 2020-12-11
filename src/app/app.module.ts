@@ -14,6 +14,7 @@ import { ProductsPageComponent } from './pages/account/store/products-page/produ
 import { CartPageComponent } from './pages/account/store/cart-page/cart-page.component';
 import { FramePageComponent } from './pages/account/master/frame.page';
 import { ProductCardComponent } from './components/store/product-card/product-card.component';
+import { LoadComponent } from './components/shared/load/load.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProductCardComponent } from './components/store/product-card/product-ca
     CartPageComponent,
     FramePageComponent,
     ProductCardComponent,
+    LoadComponent,
   ],
   imports: [
     BrowserModule,
