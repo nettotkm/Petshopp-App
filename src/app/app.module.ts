@@ -16,6 +16,8 @@ import { FramePageComponent } from './pages/account/master/frame.page';
 import { ProductCardComponent } from './components/store/product-card/product-card.component';
 import { LoadComponent } from './components/shared/load/load.component';
 import { MaskDirective } from './directives/mask.directive';
+import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { MaskDirective } from './directives/mask.directive';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
