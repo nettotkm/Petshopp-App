@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidator } from '../../../validators/custom.validator';
+import { Security } from '../../../utils/security.util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +13,11 @@ import { CustomValidator } from '../../../validators/custom.validator';
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
   public busy = false;
-  constructor(private service: DataService, private fb: FormBuilder) {
+  constructor(
+    private service: DataService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       username: [
         '',
@@ -35,13 +41,13 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const token = localStorage.getItem('petshop.token');
+    const token = Security.getToken();
     if (token) {
       this.busy = true;
       this.service.refreshToken().subscribe(
         (data: any) => {
-          localStorage.setItem('petshop.token', data.token);
           this.busy = false;
+          this.setUser(data.customer, data.token);
         },
         (err) => {
           localStorage.clear();
@@ -55,7 +61,7 @@ export class LoginPageComponent implements OnInit {
     this.busy = true;
     this.service.authenticate(this.form.value).subscribe(
       (data: any) => {
-        localStorage.setItem('petshop.token', data.token);
+        this.setUser(data.customer, data.token);
         this.busy = false;
       },
       (err) => {
@@ -63,5 +69,10 @@ export class LoginPageComponent implements OnInit {
         this.busy = false;
       }
     );
+  }
+
+  setUser(user, token) {
+    Security.set(user, token);
+    this.router.navigate(['/']);
   }
 }
