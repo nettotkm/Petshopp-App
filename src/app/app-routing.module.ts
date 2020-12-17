@@ -1,3 +1,4 @@
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PathLocationStrategy } from '@angular/common';
@@ -27,7 +28,11 @@ const routes: Routes = [
   {
     path: 'account',
     component: FramePageComponent,
-    children: [{ path: 'pets', component: PetsPageComponent }],
+    canActivate: [AuthService],
+    children: [
+      { path: '', component: ProfilePageComponent },
+      { path: 'pets', component: PetsPageComponent },
+    ],
   },
 
   {
